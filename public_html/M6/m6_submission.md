@@ -1,6 +1,6 @@
 <table><tr><td> <em>Assignment: </em> HW HTML5 Canvas Game</td></tr>
 <tr><td> <em>Student: </em> Shivam Shah(ss4349)</td></tr>
-<tr><td> <em>Generated: </em> 3/27/2022 11:18:38 PM</td></tr>
+<tr><td> <em>Generated: </em> 3/27/2022 11:30:43 PM</td></tr>
 <tr><td> <em>Grading Link: </em> <a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IT202-004-S22/hw-html5-canvas-game/grade/ss4349" target="_blank">Grading</a></td></tr></table>
 <table><tr><td> <em>Instructions: </em> <ol>
 <li>Create a branch for this assignment called <em>M6-HTML5-Canvas</em></li>
@@ -37,7 +37,7 @@
 <tr><td> <em>Sub-Task 2: </em> Add the direct link to the html5.html file from Heroku Prod (i.e., https://mt85-prod.herokuapp.com/M6/html5.html)</td></tr>
 <tr><td> <a rel="noreferrer noopener" target="_blank" href="https://ss4349-prod.herokuapp.com/M6/html5.html">https://ss4349-prod.herokuapp.com/M6/html5.html</a> </td></tr>
 <tr><td> <em>Sub-Task 3: </em> Add the pull request link for this assignment from M6-HTML5-Canvas to dev</td></tr>
-<tr><td> <a rel="noreferrer noopener" target="_blank" href="https://github.com/Shivamshahgithub/IT202-004/pull/37">https://github.com/Shivamshahgithub/IT202-004/pull/37</a> </td></tr>
+<tr><td> <a rel="noreferrer noopener" target="_blank" href="https://github.com/Shivamshahgithub/IT202-004/pull/38">https://github.com/Shivamshahgithub/IT202-004/pull/38</a> </td></tr>
 </table></td></tr>
 <table><tr><td> <em>Deliverable 2: </em> Significant Change #1 </td></tr><tr><td><em>Status: </em> <img width="100" height="20" src="https://via.placeholder.com/400x120/009955/fff?text=Complete"></td></tr>
 <tr><td><table><tr><td> <em>Sub-Task 1: </em> Describe your change/modification</td></tr>
