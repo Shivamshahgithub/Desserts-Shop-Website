@@ -46,4 +46,8 @@ session_start();
             <li><a href="<?php echo get_url('logout.php'); ?>">Logout</a></li>
         <?php endif; ?>
     </ul>
+<<<<<<< HEAD
 </nav>
+=======
+</nav>
+>>>>>>> 5ea8137d8f4343376e98d912da30dacd6e41c908
