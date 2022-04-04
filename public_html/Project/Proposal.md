@@ -62,7 +62,7 @@ Your Name: Shivam Shah
     -  [Milestone 1](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone1/public_html/Project/milestone1.md)
     -  [Profile](https://ss4349-prod.herokuapp.com/Project/profile.php)
 
-    - [X] \(03/13/2022) Basic Roles implemented
+    - [X] \(03/30/2022) Basic Roles implemented
       - Have a Roles table	(id, name, description, is_active, modified, created)
       - Have a User Roles table (id, user_id, role_id, is_active, created, modified)
       - Include a function to check if a user has a specific role (we won’t use it for this milestone but it should be usable in the future)
