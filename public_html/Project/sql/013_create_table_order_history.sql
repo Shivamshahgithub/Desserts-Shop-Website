@@ -8,6 +8,6 @@ CREATE TABLE IF NOT EXISTS OrderHistory(
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     modified TIMESTAMP DEFAULT CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(id),
-    FOREIGN KEY (item_id) REFERENCES RM_Items(id),
+    FOREIGN KEY (item_id) REFERENCES Items(id),
     check(quantity > 0)
 )
