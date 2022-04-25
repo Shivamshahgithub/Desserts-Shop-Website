@@ -13,6 +13,10 @@
 .alert-info {
     background-color: teal;
 }
+img {
+    width: 50%;
+    height: auto;
+  }
 nav li{display: inline; background-color: orange;}
 nav li a{color: rgb(15, 1, 6)}
 input{border: 100%; font-size: 16px;}

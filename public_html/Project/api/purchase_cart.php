@@ -10,7 +10,7 @@ $response = ["status" => 400, "message" => "There was a problem completing your 
 http_response_code(400);
 if ($user_id > 0) {
     $db = getDB();
-    $stmt = $db->prepare("SELECT name, c.id as line_id, item_id, quantity, cost, (cost*quantity) as subtotal FROM RM_Cart c JOIN RM_Items i on c.item_id = i.id WHERE c.user_id = :uid");
+    $stmt = $db->prepare("SELECT name, c.id as line_id, product_id, desired_quantity, cost, (cost*desired_quantity) as subtotal FROM Cart c JOIN Products i on c.product_id = i.id WHERE c.user_id = :uid");
     try {
         $stmt->execute([":uid" => $user_id]);
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ if ($user_id > 0) {
         if ($balance >= $total_cost) {
             //can purchase
             $db->beginTransaction();
-            $stmt = $db->prepare("SELECT max(order_id) as order_id FROM RM_OrderHistory");
+            $stmt = $db->prepare("SELECT max(order_id) as order_id FROM OrderHistory");
             $next_order_id = 0;
             //get next order id
             try {
@@ -36,9 +36,9 @@ if ($user_id > 0) {
             }
             //deduct product stock (used to determine if out of stock as it'll fail with a constraint violation)
             if ($next_order_id > 0) {
-                $stmt = $db->prepare("UPDATE RM_Items 
-                set stock = stock - (select IFNULL(quantity, 0) FROM RM_Cart WHERE item_id = RM_Items.id and user_id = :uid) 
-                WHERE id in (SELECT item_id from RM_Cart where user_id = :uid)");
+                $stmt = $db->prepare("UPDATE Products 
+                set stock = stock - (select IFNULL(desired_quantity, 0) FROM Cart WHERE product_id = Products.id and user_id = :uid) 
+                WHERE id in (SELECT product_id from Cart where user_id = :uid)");
                 try {
                     $stmt->execute([":uid" => $user_id]);
                 } catch (PDOException $e) {
@@ -50,8 +50,8 @@ if ($user_id > 0) {
             }
             //map cart to order history
             if ($next_order_id > 0) {
-                $stmt = $db->prepare("INSERT INTO RM_OrderHistory (item_id, user_id, quantity, cost, order_id) 
-                SELECT item_id, user_id, RM_Cart.quantity, cost, :order_id FROM RM_Cart JOIN RM_Items on RM_Cart.item_id = RM_Items.id
+                $stmt = $db->prepare("INSERT INTO OrderHistory (product_id, user_id, quantity, cost, order_id) 
+                SELECT product_id, user_id, Cart.desired_quantity, cost, :order_id FROM Cart JOIN Products on Cart.product_id = Products.id
                  WHERE user_id = :uid");
                 try {
                     $stmt->execute([":uid" => $user_id, ":order_id" => $next_order_id]);
@@ -65,7 +65,7 @@ if ($user_id > 0) {
             //TBD
             //clear the user's cart now that the process is done
             if ($next_order_id > 0) {
-                $stmt =  $db->prepare("DELETE from RM_Cart where user_id = :uid");
+                $stmt =  $db->prepare("DELETE from Cart where user_id = :uid");
                 try {
                     $stmt->execute([":uid" => $user_id]);
                 } catch (PDOException $e) {

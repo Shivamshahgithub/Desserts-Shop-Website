@@ -11,16 +11,16 @@ http_response_code(400);
 $line_id = se($_REQUEST, "line_id", 0, false);
 if ($user_id > 0 && $line_id > 0) {
     $db = getDB();
-    $stmt = $db->prepare("DELETE FROM RM_Cart where id = :id and :uid");
+    $stmt = $db->prepare("DELETE FROM Cart where id = :id and :uid");
     try {
         //added user_id to ensure the user can only delete their own items
         $stmt->execute([":id" => $line_id, ":uid" => $user_id]);
         $response["status"] = 200;
-        $response["message"] = "Deleted line item";
+        $response["message"] = "Deleted line product";
         http_response_code(200);
     } catch (PDOException $e) {
-        error_log("Error deleting line item: " . var_export($e, true));
-        $response["message"] = "Error deleting item";
+        error_log("Error deleting line product: " . var_export($e, true));
+        $response["message"] = "Error deleting product";
     }
 }
 echo json_encode($response);
