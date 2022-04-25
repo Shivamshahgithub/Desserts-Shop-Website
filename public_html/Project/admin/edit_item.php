@@ -43,6 +43,7 @@ function mapColumn($col)
 }
 ?>
 <div class="container-fluid">
+    <!-- Edit products in the shop-->
     <h1>Edit Product</h1>
     <form method="POST">
         <?php foreach ($result as $column => $value) : ?>
