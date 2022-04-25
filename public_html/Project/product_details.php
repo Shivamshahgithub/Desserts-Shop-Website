@@ -1,18 +1,10 @@
 <?php
 //note we need to go up 1 more directory
-require(__DIR__ . "/../../../partials/nav.php");
-
-if (!has_role("Admin")) {
-    flash("You don't have permission to view this page", "warning");
-    die(header("Location: $BASE_PATH" . "home.php"));
+require(__DIR__ . "/../../partials/nav.php");
+$id = se($_GET, "id", -1, false);
+if ($id < 1) {
+    flash("Missing product id in query params", "danger");
 }
-//update the item
-if (isset($_POST["submit"])) {
-    if (update_data("Products", $_GET["id"], $_POST)) {
-        flash("Updated product", "success");
-    }
-}
-
 //get the table definition
 $result = [];
 $columns = get_columns("Products");
@@ -20,7 +12,6 @@ $columns = get_columns("Products");
 $ignore = ["id", "modified", "created"];
 $db = getDB();
 //get the item
-$id = se($_GET, "id", -1, false);
 $stmt = $db->prepare("SELECT * FROM Products where id =:id");
 try {
     $stmt->execute([":id" => $id]);
@@ -43,22 +34,21 @@ function mapColumn($col)
 }
 ?>
 <div class="container-fluid">
-    <h1>Edit Product</h1>
-    <form method="POST">
+    <h1>Product Details</h1>
         <?php foreach ($result as $column => $value) : ?>
             <?php /* Lazily ignoring fields via hardcoded array*/ ?>
             <?php if (!in_array($column, $ignore)) : ?>
-                <div class="mb-4">
-                    <label class="form-label" for="<?php se($column); ?>"><?php se($column); ?></label>
-                    <input class="form-control" id="<?php se($column); ?>" type="<?php echo mapColumn($column); ?>" value="<?php se($value); ?>" name="<?php se($column); ?>" />
+                <div class="mb-4"> 
+                <!--helps the product details page work-->   
+                <div class="card" for="<?php se($column); ?>"><?php se($column); ?>: <?php se($value); ?></div>
+                    <div class="card" id="<?php se($column); ?>" type="<?php echo mapColumn($column); ?>" value="<?php se($value); ?>" name="<?php se($column); ?>"></div>
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
-        <input class="btn btn-primary" type="submit" value="Update" name="submit" />
-    </form>
+        <!---<input class="btn btn-primary" type="submit" value="Edit" name="submit" />-->
+        <a href="edit_item.php?id=<?php se($record, "id"); ?>">Edit</a>
 </div>
-
 <?php
 //note we need to go up 1 more directory
-require_once(__DIR__ . "/../../../partials/footer.php");
+require_once(__DIR__ . "/../../partials/footer.php");
 ?>

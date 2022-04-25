@@ -1,4 +1,4 @@
-function flash(message = "", color = "info") {
+function flash (message = "", color = "info") {
     let flash = document.getElementById("flash");
     //create a div (or whatever wrapper we want)
     let outerDiv = document.createElement("div");
@@ -14,20 +14,19 @@ function flash(message = "", color = "info") {
     //add the element to the DOM (if we don't it merely exists in memory)
     flash.appendChild(outerDiv);
 }
-function isValidUsername (username){
-    const pattern = '/^[a-z0-9_-]{3,16}$/';
+function isValidUsername (username) {
+    const pattern = /^[a-z0-9_-]{3,16}$/;
     return pattern.test(username);
 }
-function isValidEmail (email){
-    const pattern = '/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/';
-    return pattern.test(email);
+function isValidEmail (email) {
+    return true;
 }
-function isValidPassword (password){
-    if (!password){
+function isValidPassword (password) {
+    if (!password) {
         return false;
     }
     return password.length >= 8;
 }
-function isEqual (a, b){
+function isEqual (a, b) {
     return a === b;
 }
