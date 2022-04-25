@@ -38,7 +38,8 @@ function mapColumn($col)
         <?php foreach ($result as $column => $value) : ?>
             <?php /* Lazily ignoring fields via hardcoded array*/ ?>
             <?php if (!in_array($column, $ignore)) : ?>
-                <div class="mb-4">    
+                <div class="mb-4"> 
+                <!--helps the product details page work-->   
                 <div class="card" for="<?php se($column); ?>"><?php se($column); ?>: <?php se($value); ?></div>
                     <div class="card" id="<?php se($column); ?>" type="<?php echo mapColumn($column); ?>" value="<?php se($value); ?>" name="<?php se($column); ?>"></div>
                 </div>
