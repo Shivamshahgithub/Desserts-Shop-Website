@@ -9,7 +9,6 @@ if (!is_logged_in()) {
    flash("You must be logged in to access this page", "warning");
    die(header("Location: login.php"));
 }
-
 //add to cart stuff//
 if (isset($_POST["add"])){
     $product_id = (int)se($_POST, "product_id", 0, false);
@@ -33,9 +32,6 @@ if (isset($_POST["add"])){
         }
     }
 }
-
-
-
 //delete cart stuff//
 if (isset($_POST["delete"])){
     $user_id = get_user_id();
@@ -172,7 +168,7 @@ if(isset($_POST["update"])){
        }
    }
 }
-
+//deletes the product in the cart
 if(isset($_POST["delete"])){
    $stmt = $db->prepare("DELETE FROM Cart where product_id = :pid");
    $cart = $stmt->execute([":pid"=>$_POST["cartId"]]);
@@ -180,6 +176,7 @@ if(isset($_POST["delete"])){
        flash("Product deleted from cart", "success");
    }
 }
+//clears the cart
 if(isset($_POST["clear"])){
    $stmt = $db->prepare("DELETE FROM Cart where user_id = :id");
    $cart = $stmt->execute([":id"=>get_user_id()]);
