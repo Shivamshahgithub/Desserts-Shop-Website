@@ -46,7 +46,6 @@ session_start();
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('register.php'); ?>">Register</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('shop.php'); ?>">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('cart.php'); ?>">Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('admin/list_items.php'); ?>">Product List</a></li>
 
                 <?php endif; ?>
                 <?php if (has_role("Admin")) : ?>

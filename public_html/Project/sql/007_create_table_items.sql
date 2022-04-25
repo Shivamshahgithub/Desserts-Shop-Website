@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS Products(
     stock int DEFAULT  0,
      -- shop people may want to record it as pennies
     category varchar(20),
+    cost int DEFAULT 1,
     unit_price int Default 1,
     visibility boolean,
     image text,

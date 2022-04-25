@@ -126,7 +126,7 @@ try {
                     console.log(xhr, status, error);
                 });
         }
-        //TODO create JS helper to update all show-balance elements
+        
     }
 </script>
 
@@ -200,6 +200,7 @@ try {
                             <input type="hidden" name="product_id" value="<?php se($product, 'id'); ?>" />
                             <input type="number" name="desired_quantity" value="1" />
                             <input type="submit" value="Add to Cart" name ="add"/>
+                            <input type="hidden" name="unit_price" value="<?php se($product, 'unit_price'); ?>" />
                             </form>
                         <?php if (has_role("Admin")) : ?> 
                             <td>

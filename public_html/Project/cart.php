@@ -14,14 +14,16 @@ if (!is_logged_in()) {
 if (isset($_POST["add"])){
     $product_id = (int)se($_POST, "product_id", 0, false);
     $desired_quantity = (int)se($_POST, "desired_quantity", 0, false);
+    $unit_price = (int)se($_POST, "unit_price", 0, false);
     if ($product_id > 0 && $desired_quantity > 0) {
-        $query = "INSERT INTO Cart (product_id, desired_quantity, user_id) VALUES(:pid, :dq, :uid) ON DUPLICATE KEY UPDATE desired_quantity = desired_quantity + :dq";
+        $query = "INSERT INTO Cart (product_id, desired_quantity, user_id, unit_price) VALUES(:pid, :dq, :uid, :up) ON DUPLICATE KEY UPDATE desired_quantity = desired_quantity + :dq";
         $db = getDB();
         //note adding to cart doesn't verify price or quantity
         $stmt = $db->prepare($query);
         $stmt->bindValue(":pid", $product_id, PDO::PARAM_INT);
         $stmt->bindValue(":dq", $desired_quantity, PDO::PARAM_INT);
         $stmt->bindValue(":uid", get_user_id(), PDO::PARAM_INT);
+        $stmt->bindValue(":up", $unit_price, PDO::PARAM_INT);
         try {
             $stmt->execute();
             flash("Product added to cart");
@@ -235,7 +237,7 @@ try {
                <form method="POST">
                <div class="row">
                    <div class="col">
-                       <a href="product_detail.php?id=<?php se($cart, "product_id") ?>"> <?php se($cart, "name")?></a>
+                       <a href="product_details.php?id=<?php se($cart, "product_id") ?>"> <?php se($cart, "name")?></a>
                        <!--<?php echo $cart["name"];?> -->
                    </div>
                    <div class="col">
