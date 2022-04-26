@@ -240,16 +240,19 @@ try {
                    <div class="col">
                        <input type="number" min="0" name="desired_quantity" value="<?php echo $cart["desired_quantity"];?>"/>
                        <input type="hidden" name="cartId" value="<?php echo $cart["product_id"];?>"/>
-               </div>
-               <div class="col">
+                    </div>
                    <div class="col">
                        <?php echo $cart["unit_price"];?>
-                   </div>    
+                   </div>
+                   <div class = "col">
                    <?php
                    $subtotal = $cart["subtotal"];
                    $cart_total= $cart_total+$subtotal;
-                   $cart["subtotal"]; ?>
-                   </div>
+                   echo
+                   $cart["subtotal"]; 
+                   ?>
+                   </div>   
+                   
                    <div class="col">
                        <!-- form split was on purpose-->
                        <input type="submit" class="btn btn-outline-dark" name="update" value="Quantity Update"/>
