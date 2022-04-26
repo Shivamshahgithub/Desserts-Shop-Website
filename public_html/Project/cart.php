@@ -251,7 +251,6 @@ try {
                    $cart["subtotal"]; ?>
                    </div>
                    <div class="col">
-                       <!-- form split was on purpose-->
                        <input type="submit" class="btn btn-outline-dark" name="update" value="Quantity Update"/>
                        </form>
                        <form method="POST">
