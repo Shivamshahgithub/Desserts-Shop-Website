@@ -2,6 +2,7 @@
 require(__DIR__ . "/../../partials/nav.php");
 ?>
 <h1>Home</h1>
+<p>Welcome to the shopping website. You can shop chocolates and icecreams here. Happy shopping!!</p>
 <?php
 
 if (is_logged_in(true)) {

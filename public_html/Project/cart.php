@@ -158,7 +158,7 @@ if(isset($_POST["update"])){
        $stmt = $db->prepare("UPDATE Cart set desired_quantity = :q where product_id = :pid");
        $cart = $stmt->execute([":pid"=>$_POST["cartId"], ":q"=>$_POST["desired_quantity"]]);
        if($cart){
-           flash("Updated desired_quantity", "success");
+           flash("Updated desired quantity", "success");
        }
    } elseif ($desired_quantity==0 || $desired_quantity<0){
        $stmt = $db->prepare("DELETE FROM Cart where product_id = :pid");
@@ -166,7 +166,7 @@ if(isset($_POST["update"])){
        if($cart){
            flash("Product deleted from cart", "success");
        }
-   }
+    }
 }
 //deletes the product in the cart
 if(isset($_POST["delete"])){
@@ -190,8 +190,7 @@ if (!isset($user_id)) {
    $user_id = get_user_id();
 }
 error_log("Cart");
-$stmt = $db->prepare("SELECT p.id as product_id, name, image, c.desired_quantity, c.id as cart_id, c.unit_price, (c.unit_price * c.desired_quantity) as subtotal FROM Cart c JOIN Products p on c.product_id = p.id WHERE c.user_id = :uid and c.desired_quantity > 0");
-$stmt->execute([":uid"=>get_user_id()]);
+$stmt = $db->prepare("SELECT p.id as product_id, name, image, c.desired_quantity, c.id as cart_id, c.unit_price, stock, p.unit_price as price, (c.unit_price * c.desired_quantity) as subtotal FROM Cart c JOIN Products p on c.product_id = p.id WHERE c.user_id = :uid and c.desired_quantity > 0");
 try {
    $stmt->execute([":uid" => $user_id]);
    $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -273,6 +272,8 @@ try {
                        <div class = "col">
                        </div>      
                        <div class = "row">
+                       <a href="<?php echo get_url('checkout.php');?>">Checkout</a>
+                            <br>
                                <input type="hidden" name="cartId" value="<?php echo $cart["product_id"];?>"/>
                                <input type="submit" class="btn btn-outline-dark" name="clear" value="Clear Cart"/>
                            </div>
