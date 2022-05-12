@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS Products(
     id int AUTO_INCREMENT PRIMARY  KEY,
     name varchar(30) UNIQUE, -- alternatively you'd have a SKU that's unique
     description text,
-    stock int DEFAULT  0,
+    stock int DEFAULT  1,
      -- shop people may want to record it as pennies
     category varchar(20),
     cost int DEFAULT 1,
