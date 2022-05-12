@@ -14,12 +14,12 @@ $params[":user_id"] = $user_id;
 $col = se($_GET, "col", "created", false);
 //allowed list
 if (!in_array($col, ["total_price","category", "created"])) {
-    $col = "created"; //default value, prevent sql injection
+    $col = "created";
 }
 $order = se($_GET, "order", "asc", false);
 //allowed list
 if (!in_array($order, ["asc", "desc"])) {
-    $order = "asc"; //default value, prevent sql injection
+    $order = "asc"; 
 }
 
     $category = se($_GET,"category", "", false);
@@ -34,7 +34,7 @@ if (!in_array($order, ["asc", "desc"])) {
     }
    
     if (!empty($col) && !empty($order) && $col != "select" && $order != "select") {
-        $query .= " ORDER BY Orders.$col $order"; //be sure you trust these values, I validate via the in_array checks above
+        $query .= " ORDER BY Orders.$col $order"; 
     }
 
 $per_page = 5;
@@ -64,6 +64,7 @@ try {
     error_log("error getting data: " . var_export($e, true));
 }
 ?>
+<!-- The filters or sorting on this page which makes it easier to access history-->
 <div class="container-fluid">
     <h1>Purchase History</h1>
     <form method="GET" class="row row-cols-lg-auto g-3 align-items-center">
