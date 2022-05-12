@@ -37,6 +37,7 @@ function persistQueryString($page)
     $_GET["page"] = $page;
     return http_build_query($_GET);
 }
+/*
 function order($user_id,$total_price,$full_address,$payment_method)
 {
     error_log("add_item() Item ID: user_id: $user_id");
@@ -46,21 +47,21 @@ function order($user_id,$total_price,$full_address,$payment_method)
         $stmt->execute([":uid" =>$user_id,":tp" =>$total_price,":a" =>$full_address,":pm" =>$payment_method]);
         return $db->lastInsertId();
     }catch (PDOException $e) {
-        error_log("Error adding items to OrderItems table: " . var_export($e->errorInfo, true));
+        error_log("Error adding items to Order_Items table: " . var_export($e->errorInfo, true));
     }
     return false;
-}
-function order_item($user_id,$order_id)
+}*/
+function Order_Items($user_id,$order_id)
 {
     //error_log("add_item() Item ID: order_id: $order_id");
     $db = getDB();
-    $stmt = $db->prepare("INSERT INTO OrderItems (order_id,product_id, quantity, unit_price) SELECT :order_id, product_id , desired_quantity , unit_cost FROM Cart WHERE user_id = :uid");
-    //$stmt = $db->prepare("INSERT INTO OrderItems (order_id, product_id, quantity, unit_price) VALUES (:oid, :pid, :q, :up) ");
+    $stmt = $db->prepare("INSERT INTO Order_Items (order_id,product_id, desired_quantity, unit_price) SELECT :order_id, product_id , desired_quantity , unit_price FROM Cart WHERE user_id = :uid");
+    //$stmt = $db->prepare("INSERT INTO Order_Items (order_id, product_id, quantity, unit_price) VALUES (:oid, :pid, :q, :up) ");
     try {
         $stmt->execute([":uid"=>$user_id, ":order_id"=>$order_id]);
         return true;
     }catch (PDOException $e) {
-        error_log("Error adding items to OrderItems table: " . var_export($e->errorInfo, true));
+        error_log("Error adding items to Order_Items table: " . var_export($e->errorInfo, true));
     }
     return false;
 }

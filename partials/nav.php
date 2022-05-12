@@ -40,6 +40,12 @@ session_start();
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('profile.php'); ?>">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('shop.php'); ?>">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('cart.php'); ?>">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('checkout.php'); ?>">Checkout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('order_confirm.php'); ?>">Order Confirmation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('purchase_history.php'); ?>">Purchase History</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('order_details.php'); ?>">Order Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo get_url('ratings.php'); ?>">Ratings</a></li>
+
                 <?php endif; ?>
                 <?php if (!is_logged_in()) : ?>
                     <li class="nav-item"><a class="nav-link" href="<?php echo get_url('login.php'); ?>">Login</a></li>
