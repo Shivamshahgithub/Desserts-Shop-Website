@@ -9,7 +9,6 @@ if (!is_logged_in()) {
    flash("You must be logged in to access this page", "warning");
    die(header("Location: login.php"));
 }
-
 //add to cart stuff//
 if (isset($_POST["add"])){
     $product_id = (int)se($_POST, "product_id", 0, false);
@@ -33,9 +32,6 @@ if (isset($_POST["add"])){
         }
     }
 }
-
-
-
 //delete cart stuff//
 if (isset($_POST["delete"])){
     $user_id = get_user_id();
@@ -162,7 +158,7 @@ if(isset($_POST["update"])){
        $stmt = $db->prepare("UPDATE Cart set desired_quantity = :q where product_id = :pid");
        $cart = $stmt->execute([":pid"=>$_POST["cartId"], ":q"=>$_POST["desired_quantity"]]);
        if($cart){
-           flash("Updated desired_quantity", "success");
+           flash("Updated desired quantity", "success");
        }
    } elseif ($desired_quantity==0 || $desired_quantity<0){
        $stmt = $db->prepare("DELETE FROM Cart where product_id = :pid");
@@ -170,9 +166,9 @@ if(isset($_POST["update"])){
        if($cart){
            flash("Product deleted from cart", "success");
        }
-   }
+    }
 }
-
+//deletes the product in the cart
 if(isset($_POST["delete"])){
    $stmt = $db->prepare("DELETE FROM Cart where product_id = :pid");
    $cart = $stmt->execute([":pid"=>$_POST["cartId"]]);
@@ -180,6 +176,7 @@ if(isset($_POST["delete"])){
        flash("Product deleted from cart", "success");
    }
 }
+//clears the cart
 if(isset($_POST["clear"])){
    $stmt = $db->prepare("DELETE FROM Cart where user_id = :id");
    $cart = $stmt->execute([":id"=>get_user_id()]);
@@ -193,8 +190,7 @@ if (!isset($user_id)) {
    $user_id = get_user_id();
 }
 error_log("Cart");
-$stmt = $db->prepare("SELECT p.id as product_id, name, image, c.desired_quantity, c.id as cart_id, c.unit_price, (c.unit_price * c.desired_quantity) as subtotal FROM Cart c JOIN Products p on c.product_id = p.id WHERE c.user_id = :uid and c.desired_quantity > 0");
-$stmt->execute([":uid"=>get_user_id()]);
+$stmt = $db->prepare("SELECT p.id as product_id, name, image, c.desired_quantity, c.id as cart_id, c.unit_price, stock, p.unit_price as price, (c.unit_price * c.desired_quantity) as subtotal FROM Cart c JOIN Products p on c.product_id = p.id WHERE c.user_id = :uid and c.desired_quantity > 0");
 try {
    $stmt->execute([":uid" => $user_id]);
    $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -243,18 +239,20 @@ try {
                    <div class="col">
                        <input type="number" min="0" name="desired_quantity" value="<?php echo $cart["desired_quantity"];?>"/>
                        <input type="hidden" name="cartId" value="<?php echo $cart["product_id"];?>"/>
-               </div>
-               <div class="col">
+                    </div>
                    <div class="col">
                        <?php echo $cart["unit_price"];?>
-                   </div>    
+                   </div>
+                   <div class = "col">
                    <?php
                    $subtotal = $cart["subtotal"];
                    $cart_total= $cart_total+$subtotal;
-                   $cart["subtotal"]; ?>
-                   </div>
+                   echo
+                   $cart["subtotal"]; 
+                   ?>
+                   </div>   
+                   
                    <div class="col">
-                       <!-- form split was on purpose-->
                        <input type="submit" class="btn btn-outline-dark" name="update" value="Quantity Update"/>
                        </form>
                        <form method="POST">
@@ -274,6 +272,8 @@ try {
                        <div class = "col">
                        </div>      
                        <div class = "row">
+                       <a href="<?php echo get_url('checkout.php');?>">Checkout</a>
+                            <br>
                                <input type="hidden" name="cartId" value="<?php echo $cart["product_id"];?>"/>
                                <input type="submit" class="btn btn-outline-dark" name="clear" value="Clear Cart"/>
                            </div>

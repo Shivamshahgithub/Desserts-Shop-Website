@@ -24,6 +24,7 @@ if (isset($_POST["productName"])) {
 }
 ?>
 <div class="container-fluid">
+    <!-- List products on the shop-->
     <h1>List Products</h1>
     <form method="POST" class="row row-cols-lg-auto g-3 align-items-center">
         <div class="input-group mb-3">

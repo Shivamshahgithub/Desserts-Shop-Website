@@ -18,6 +18,7 @@ $columns = get_columns("Products");
 $ignore = ["id", "modified", "created"];
 ?>
 <div class="container-fluid">
+    <!-- Add products to the shop-->
     <h1>Add Products</h1>
     <form method="POST">
         <?php foreach ($columns as $index => $column) : ?>
