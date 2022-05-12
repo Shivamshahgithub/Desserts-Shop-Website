@@ -38,23 +38,6 @@ require_once(__DIR__ . "/../../lib/functions.php");
     } catch (PDOException $e) {
         flash("<pre>" . var_export($e, true) . "</pre>");
     }
-    //print_r($results);
-    //echo '<br/>';
-    //print_r($results1);
-    /*$results = [];
-    $order_id = se($_GET, "id", 0, false);
-    $db = getDB();
-    $stmt = $db->prepare("SELECT DISTINCT Orders.id, Orders.user_id, Orders.total_price, Orders.address , Orders.payment_method, Order_Items.order_id , Order_Items.product_id , Order_Items.quantity , Order_Items.unit_price FROM Orders JOIN Order_Items on Orders.id = Order_Items.order_id WHERE Orders.id =:id");
-    try {
-        $stmt->execute([":id"=> $order_id]);
-        $r = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        if ($r) {
-            $results = $r;
-        }
-    } catch (PDOException $e) {
-        flash("<pre>" . var_export($e, true) . "</pre>"); 
-    }  
-    print_r($results);*/
 ?>
 <div class="container-fluid">
     <h1 id ="noflex" >Order Detail</h1>
