@@ -37,7 +37,7 @@ try {
 ?>
 
 <div class="container-fluid">
-    <h1>Order Confirmation</h1>
+    <h1>Order Confirmation Page</h1>
     <div class="mb-3">
         <label class="form-label" for="thanks">Thank You for Your Purchase!</label>
     </div>
