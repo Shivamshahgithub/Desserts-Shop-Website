@@ -142,14 +142,14 @@ try {
         <div class="col">
             <div class="input-group">
                 <div class="input-group-text">Sort</div>
-                <!-- make sure these match the in_array filter above-->
+                <!-- Sorting Filters-->
                 <select class="form-control" name="col" value="<?php se($col); ?>">
                     <option value="unit_price">Unit Price</option>
                     <option value="category">Category</option>
                     <option value="stock">Stock</option>
                     <option value="name">Name</option>
                     <option value="created">Created</option>
-                    <option value="average_rating">Average Rating</option>
+                    <option value="avg_rating">Average Rating</option>
                     <?php if (has_role("Admin")) : ?>
                         <option value="out_stock">Out of Stock</option>
                     <?php endif; ?>
