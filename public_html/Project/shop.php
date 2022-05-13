@@ -149,7 +149,7 @@ try {
                     <option value="stock">Stock</option>
                     <option value="name">Name</option>
                     <option value="created">Created</option>
-                    <option value="average_rating">Average Rating</option>
+                    <option value="avg_rating">Average Rating</option>
                     <?php if (has_role("Admin")) : ?>
                         <option value="out_stock">Out of Stock</option>
                     <?php endif; ?>
