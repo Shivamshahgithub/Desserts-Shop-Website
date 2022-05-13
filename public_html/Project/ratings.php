@@ -40,7 +40,7 @@ if(isset($_POST["rating"]) && isset($_POST["review"])){
     
 }
 ?>
-
+<!--Ratings-->
 <div class="container-fluid">
     <h1>Rate Product: <?php se($name) ?></h1>
     <form onsubmit=true method="POST" >

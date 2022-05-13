@@ -142,7 +142,7 @@ try {
         <div class="col">
             <div class="input-group">
                 <div class="input-group-text">Sort</div>
-                <!-- make sure these match the in_array filter above-->
+                <!-- Sorting Filters-->
                 <select class="form-control" name="col" value="<?php se($col); ?>">
                     <option value="unit_price">Unit Price</option>
                     <option value="category">Category</option>
