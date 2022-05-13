@@ -7,7 +7,7 @@ $isMe = $user_id === get_user_id();
 $edit = !!se($_GET, "edit", false, false); //if key is present allow edit, otherwise no edit
 if ($user_id < 1) {
     flash("Invalid user", "danger");
-    //redirect1("home.php");
+    redirect("home.php");
     //die(header("Location: home.php"));
 }
 $email = get_user_email();
@@ -28,7 +28,7 @@ try {
     $public = se($r, "Status", 0, false) > 0;
     if (!$public && !$isMe) {
         flash("User's profile is private", "warning");
-        //redirect1("home.php");
+        redirect("home.php");
         //die(header("Location: home.php"));
     }
 } catch (Exception $e) {
