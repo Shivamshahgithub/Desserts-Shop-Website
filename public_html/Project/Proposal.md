@@ -227,7 +227,8 @@ Your Name: Shivam Shah
   - [X] \(5/12/2022) User can set their profile to be public or private (will need another column in Users table)
     - If profile is public, hide email address from other users (email address should not be publicly visible to others)
   - [Milestone4](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone4/public_html/Project/milestone4.md)
-  - 
+  - [User profile](https://ss4349-prod.herokuapp.com/Project/user_profile.php)
+  - [Profile](https://ss4349-prod.herokuapp.com/Project/profile.php)
 
   - [X] \(5/12/2022) User will be able to rate a product they purchased
     - Create table called Ratings (id, product_id, user_id, rating, comment, created, modified)
@@ -238,6 +239,8 @@ Your Name: Shivam Shah
       - Show the latest 10 reviews
       - Paginate anything beyond 10
     - Show the average rating on the Product Details Page 
+  - [Milestone4](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone4/public_html/Project/milestone4.md)
+  - [Product Details](https://ss4349-prod.herokuapp.com/Project/product_details.php)
 
   - [X] \(5/12/2022) User’s Purchase History Changes
     - Filter by date range
@@ -245,7 +248,8 @@ Your Name: Shivam Shah
     - Sort by total, date purchased, etc
     - Add pagination
       - Any filter/sort applied must be followed during the pagination process
-
+  - [Milestone4](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone4/public_html/Project/milestone4.md)
+  - [Purchase History](https://ss4349-prod.herokuapp.com/Project/purchase_history.php)
 
   - [X] \(5/12/2022) Store Owner Purchase History Changes
     - Filter by date range
@@ -254,20 +258,24 @@ Your Name: Shivam Shah
     - Add pagination
       - Any filter/sort applied must be followed during the pagination process
     - The result page should show the accurate total price of the combined search results (i.e., if just 3 records show each of $25, it should show $75 total for this view)
+  - [Milestone4](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone4/public_html/Project/milestone4.md)
+  - [Purchase History](https://ss4349-prod.herokuapp.com/Project/purchase_history.php)
 
   - [X] \(5/12/2022) Add pagination to Shop Page (and any other product lists not yet mentioned)
-
+  - [Milestone4](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone4/public_html/Project/milestone4.md)
+  - [Shop](https://ss4349-prod.herokuapp.com/Project/shop.php)
 
   - [X] \(5/12/2022) Store Owner will be able to see all products out of stock
     - This will be added as a filter to their product list page from Milestone 2
     - Pagination should account for this new filter
     - Recommended to have the filter applied as a given value (i.e., where quantity is <= value)
+  - [Milestone4](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone4/public_html/Project/milestone4.md)
+  - [Product Details](https://ss4349-prod.herokuapp.com/Project/product_details.php)
 
- 
   - [X] \(5/12/2022) User can sort products by average rating on the Shop Page
     - Hint: may want to add an “average rating” field to the Products table and update this value any time a new rating is given for the product using an aggregate function
-
-
+  - [Milestone4](https://github.com/Shivamshahgithub/IT202-004/blob/Milestone4/public_html/Project/milestone4.md)
+  - [Shop](https://ss4349-prod.herokuapp.com/Project/shop.php)
 ### Intructions
 #### Don't delete this
 1. Pick one project type
