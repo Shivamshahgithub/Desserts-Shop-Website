@@ -1,3 +1,2 @@
-# IT202-004
-## Shivam Shah
-Coding will be good.
+# Simple Shop Website
+Icecreams & Chocolates are sold here.
